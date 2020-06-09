@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Markdown Previewer by Useful Programmer</title>
+    <script src="./js/marked.js"></script>
+
+    <script>
+      function updatePreview() {
+        let previewElement = document.getElementById("preview");
+        let editorValue = document.getElementById("editor").value;
+        let markedUpHTML = marked(editorValue);
+        previewElement.innerHTML = markedUpHTML;
+      }
+
+      function setDefault() {
+        let defaultText = `\
+# Useful Programmer
+## a markdown previewer
+[Learn more about UsefulProgrammer.org](http://www.usefulprogrammer.org).
+
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+\`This is an example of inline code\`
+
+\`\`\`
+function exampleOf() {
+  return multiLineCodeBlock;
+}
+\`\`\`
+
+- This
+- is
+- an
+- example
+- of
+- list
+- items
+
+> This is an example of block quote
+
+![Useful Programmer](https://usefulprogrammer.org/wp-content/uploads/2020/05/00_Leonardo_da_Vinci_-_Ginevra_de_Benci.jpg)
+
+**This is an example of Bolded Text**`;
+        let editorField = document.getElementById("editor");
+        let previewElement = document.getElementById("preview");
+        editorField.value = defaultText;
+        previewElement.innerHTML = marked(defaultText)
+      }
+    </script>
+  </head>
+  <body onload="setDefault()" class="bg-success">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col text-center text-white bg-success my-3">
+          <h1>Markdown Previewer by Useful Programmer</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 bg-primary d-flex flex-column">
+          <h2 class="text-white text-center my-3">Editor</h2>
+          <div class="form-group flex-grow-1 d-flex flex-column">
+            <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+          </div>
+        </div>
+        <div class="col-6 bg-danger">
+          <h2 class="text-white text-center my-3">Preview</h2>
+          <div id="preview"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
